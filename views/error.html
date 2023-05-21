@@ -3,12 +3,22 @@
     <title>Weather</title>
     <link rel="stylesheet" href="/static/assets/styles.css">
   </head>
-  <body>
-    <div class="bg-white px-6 py-24 sm:py-32 lg:px-8">
-      <div class="mx-auto max-w-2xl text-center">
-        <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Oops! An error occured!</h2>
-        <p class="mt-6 text-lg leading-8 text-gray-600">{{.Code}}</p>
-        <p class="mt-6 text-lg leading-8 text-gray-600">{{.Error}}</p>
+  <body class="flex max-h-screen">
+    <div class="m-2 lg:m-auto w-full bg-white">
+      <div class="m-0 lg:mx-auto lg:max-w-7xl w-full h-full lg:h-5/6">
+        <div class="m-0 lg:mx-auto lg:max-w-2xl w-full rounded-3xl">
+          <div class="-mt-2 p-2">
+            <div class="flex h-full rounded-2xl py-10 text-center ring-1 ring-inset ring-gray-900/5 bg-gradient-to-r from-rose-700 to-pink-600">
+              <div class="m-auto">
+                <p class="text-base font-semibold text-white">{{.Code}}</p>
+                <div class="mt-6 items-baseline">
+                  <div class="text-[256px] lg:text-[128px] font-thin tracking-tight text-white">:-(</div>
+                  <div class="text-sm font-semibold leading-6 tracking-wide text-white">{{.Error}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>
