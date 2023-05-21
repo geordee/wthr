@@ -1,0 +1,8 @@
+[build]
+delay = 1000
+kill_delay = "10s"
+include_ext = ["go", "tpl", "tmpl", "html", "css"]
+exclude_dir = ["assets"]
+
+[misc]
+clean_on_exit = true

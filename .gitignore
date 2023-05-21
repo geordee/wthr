@@ -26,3 +26,6 @@ go.work
 # Web app directories
 node_modules/
 static/assets/
+
+# tmp directory used for hot reload
+tmp/
