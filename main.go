@@ -9,8 +9,8 @@ import (
 func main() {
 	app := iris.Default()
 
-	// api root
-	app.Get("/api", api.Root)
+	// Ping
+	app.Get("/ping", api.Ping)
 
 	// Weather API
 	app.Get("/api/weather", api.Weather)
