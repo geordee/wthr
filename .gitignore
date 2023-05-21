@@ -22,3 +22,7 @@ go.work
 
 # env file
 .env
+
+# Web app directories
+node_modules/
+static/assets/

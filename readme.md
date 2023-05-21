@@ -10,6 +10,28 @@ go get
 go run .
 ```
 
+## Develop
+
+Format the code
+
+```bash
+npx prettier --write .
+```
+
+Develop with hot reloading of assets
+
+```bash
+npm run dev
+go run .
+```
+
+Build
+
+```bash
+npm run build
+go build .
+```
+
 ## Test
 
 ```bash

@@ -8,6 +8,8 @@ import (
 func main() {
 	app := iris.Default()
 
+	app.HandleDir("/static", iris.Dir("./static"))
+
 	// routes
 	app.Get("/ping", routes.Ping)
 	app.Get("/weather", routes.Weather)
