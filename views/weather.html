@@ -1,19 +1,88 @@
 <html>
   <head>
     <title>Weather</title>
-    <link rel="stylesheet" href="/static/assets/styles.css">
+    <link rel="stylesheet" href="/static/assets/styles.css" />
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script defer>
+      function titlecase(string) {
+        return string
+          .toLowerCase()
+          .split(" ")
+          .map(function (word) {
+            return word.replace(word[0], word[0].toUpperCase())
+          })
+          .join(" ")
+      }
+
+      function zone(temperature) {
+        switch (true) {
+          case temperature < 0:
+            return "freezing"
+            break
+          case temperature < 10:
+            return "chilly"
+            break
+          case temperature < 20:
+            return "cold"
+            break
+          case temperature < 30:
+            return "warm"
+            break
+          case temperature < 40:
+            return "hot"
+            break
+          case temperature >= 40:
+            return "burning"
+            break
+          default:
+            return "unknown"
+            break
+        }
+      }
+
+      function zoneClass(zone) {
+        switch (zone) {
+          case "freezing":
+            return "bg-gradient-to-br from-rose-100 to-teal-100 text-gray-900"
+            break
+          case "chilly":
+            return "bg-gradient-to-br from-gray-900 via-purple-900 to-violet-600 text-white"
+            break
+          case "cold":
+            return "bg-gradient-to-br from-yellow-200 via-emerald-200 to-yellow-200 text-gray-900"
+            break
+          case "warm":
+            return "bg-gradient-to-br from-orange-300 to-rose-300 text-gray-900"
+            break
+          case "hot":
+            return "bg-gradient-to-br from-orange-400 to-rose-400 text-white"
+            break
+          case "burning":
+            return "bg-gradient-to-br from-rose-300 to-rose-500 text-white"
+            break
+          default:
+            return "bg-gray-900 text-white"
+            break
+        }
+      }
+    </script>
   </head>
   <body class="flex max-h-screen">
-    <div class="m-2 lg:m-auto w-full bg-white">
-      <div class="m-0 lg:mx-auto lg:max-w-7xl w-full h-full lg:h-5/6">
-        <div class="m-0 lg:mx-auto lg:max-w-2xl w-full rounded-3xl">
+    <div class="m-2 w-full bg-white lg:m-auto">
+      <div class="m-0 h-full w-full lg:mx-auto lg:h-5/6 lg:max-w-7xl">
+        <div class="m-0 w-full rounded-3xl lg:mx-auto lg:max-w-2xl">
           <div class="-mt-2 p-2">
-            <div class="flex h-full rounded-2xl py-10 text-center ring-1 ring-inset ring-gray-900/5 bg-gradient-to-tr from-gray-900 via-purple-900 to-violet-600">
+            <div
+              class="flex h-full rounded-2xl py-10 text-center ring-1 ring-inset ring-gray-900/5"
+              x-data="{ temperature: {{.CurrentWeather.Temperature}} }"
+              x-bind:class="zoneClass(zone(temperature))">
               <div class="m-auto">
-                <p class="text-base font-semibold text-white">{{.Latitude}}, {{.Longitude}}</p>
+                <p class="text-xl font-thin">{{.Latitude}}, {{.Longitude}}</p>
                 <div class="mt-6 items-baseline">
-                  <div class="text-[256px] lg:text-[128px] font-thin tracking-tight text-white">{{.CurrentWeather.Temperature}}</div>
-                  <div class="text-sm font-semibold leading-6 tracking-wide text-white">Current Temperature</div>
+                  <div class="text-[256px] font-thin tracking-tight lg:text-[128px]">
+                    {{.CurrentWeather.Temperature}}
+                  </div>
+                  <div x-html="titlecase(zone(temperature))" class="text-4xl font-thin leading-6 tracking-wide"></div>
                 </div>
               </div>
             </div>
