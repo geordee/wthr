@@ -11,11 +11,12 @@ func Weather(ctx iris.Context) {
 
 	weather, code, err := weather.Service(latitude, longitude)
 	ctx.StatusCode(code)
-	ctx.JSON(weather)
 
 	if err != nil {
 		ctx.JSON(iris.Map{
 			"error": err.Error(),
 		})
+	} else {
+		ctx.JSON(weather)
 	}
 }
