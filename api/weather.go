@@ -16,7 +16,8 @@ func Weather(ctx iris.Context) {
 		ctx.JSON(iris.Map{
 			"error": err.Error(),
 		})
-	} else {
-		ctx.JSON(weather)
+		return
 	}
+
+	ctx.JSON(weather)
 }
