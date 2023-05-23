@@ -38,6 +38,7 @@ func Service(latitude string, longitude string) (*Weather, int, error) {
 	q.Add("latitude", latitude)
 	q.Add("longitude", longitude)
 	q.Add("current_weather", "true")
+	q.Add("temperature_unit", "celsius")
 	q.Add("hourly", "temperature_2m,relativehumidity_2m,windspeed_10m")
 	req.URL.RawQuery = q.Encode()
 

@@ -80,7 +80,7 @@
                 <p class="text-xl font-thin">{{.Latitude}}, {{.Longitude}}</p>
                 <div class="mt-6 items-baseline">
                   <div class="text-[256px] font-thin tracking-tight lg:text-[128px]">
-                    {{.CurrentWeather.Temperature}}
+                    {{.CurrentWeather.Temperature}}<sup>°</sup>
                   </div>
                   <div x-html="titlecase(zone(temperature))" class="text-4xl font-thin leading-6 tracking-wide"></div>
                 </div>
